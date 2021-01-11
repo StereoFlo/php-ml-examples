@@ -36,17 +36,6 @@ final class Classify
         return (float) Accuracy::score($testLabels, $predictedLabels);
     }
 
-    public function getSearch(array $words)
-    {
-        $dataset = new CsvDataset('/Users/evgen/Downloads/fann/data.csv', 1);
-        $samples = $this->getSamples($dataset);
-        $dataset = new ArrayDataset($samples, $dataset->getTargets());
-
-        $anal = new Analysis();
-
-        return $anal->predict($words);
-    }
-
     private function getSamples(CsvDataset $dataset): array
     {
         $samples = [];
